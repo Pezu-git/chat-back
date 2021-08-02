@@ -1,6 +1,10 @@
+const http = require('http');
 const Koa = require('koa');
 const cors = require('@koa/cors');
 const koaBody = require('koa-body');
+const WS = require('ws');
+const Router = require('koa-router');
+const router = new Router();
 const idGenerator = require('node-unique-id-generator');
 
 const app = new Koa();
