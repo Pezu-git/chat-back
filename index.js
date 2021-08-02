@@ -8,13 +8,13 @@ const router = new Router();
 const idGenerator = require('node-unique-id-generator');
 
 const app = new Koa();
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
+const userState = [];
 
 app.use(cors());
-app.use(koaBody({urlencoded: true, multipart: true, json: true,}))
+app.use(koaBody({urlencoded: true, multipart: true, json: true,}));
 
 router.post('/newuser', async (ctx) => {
-  console.log(ctx.request.body)
   if (Object.keys(ctx.request.body).length === 0) {
     ctx.response.body = 'Нет данных'
   }
@@ -38,7 +38,11 @@ router.post('/newuser', async (ctx) => {
   }
 })
 
+
+
 app.use(router.routes());
+
+
 
 const server = http.createServer(app.callback())
 const wsServer = new WS.Server({ server });
