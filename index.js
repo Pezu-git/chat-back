@@ -38,10 +38,7 @@ router.post('/newuser', async (ctx) => {
   }
 })
 
-
-
 app.use(router.routes());
-
 
 
 const server = http.createServer(app.callback())
